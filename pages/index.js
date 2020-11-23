@@ -9,7 +9,7 @@ const Home = ({ slugs }) => (
             {slugs.map(slug => {
                 return (
                     <li key={slug}>
-                        <Link href={slug}>{slug}</Link>
+                        <Link href={`/blog/${slug}`}>{slug}</Link>
                     </li>
                 );
             })}
