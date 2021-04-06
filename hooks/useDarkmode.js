@@ -4,7 +4,7 @@ import { dark, light } from '../styled/Themes';
 
 const COOKIE_KEY = 'theme';
 
-export default () => {
+const useDarkmode = () => {
     const [theme, setTheme] = useState(light); // light by default
     const [cookie, setCookie] = useCookies([COOKIE_KEY]);
 
@@ -50,3 +50,5 @@ export default () => {
 
     return { theme, toggleTheme };
 };
+
+export default useDarkmode;
