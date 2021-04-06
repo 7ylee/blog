@@ -1,6 +1,7 @@
 import { useState, useEffect, useDebugValue } from 'react';
 import { useCookies } from 'react-cookie';
 import { dark, light } from '../styled/Themes';
+import config from '../next.config';
 
 const COOKIE_KEY = 'theme';
 
@@ -36,7 +37,7 @@ const useDarkmode = () => {
         }
 
         setCookie('theme', cookieValue, {
-            path: '/',
+            path: config.basePath,
             maxAge: 3600, // Expires after 1hr
             sameSite: true
         });
