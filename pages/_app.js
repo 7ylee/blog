@@ -5,7 +5,7 @@ import useDarkmode from '../hooks/useDarkmode';
 
 import '../node_modules/github-markdown-css/github-markdown.css';
 
-function MyApp({ Component, pageProps }) {
+function App({ Component, pageProps }) {
     const { theme, toggleTheme } = useDarkmode();
 
     return (
@@ -22,4 +22,4 @@ function MyApp({ Component, pageProps }) {
     );
 }
 
-export default MyApp;
+export default App;
