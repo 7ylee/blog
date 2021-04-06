@@ -3,18 +3,15 @@ import Link from 'next/link';
 import fs from 'fs';
 
 const Home = ({ slugs }) => (
-    <div>
-        <h1>SSG</h1>
-        <ul>
-            {slugs.map(slug => {
-                return (
-                    <li key={slug}>
-                        <Link href={slug}>{slug}</Link>
-                    </li>
-                );
-            })}
-        </ul>
-    </div>
+    <ul>
+        {slugs.map(slug => {
+            return (
+                <li key={slug}>
+                    <Link href={slug}>{slug}</Link>
+                </li>
+            );
+        })}
+    </ul>
 );
 
 export const getStaticProps = async () => {

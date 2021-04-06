@@ -1,3 +1,6 @@
+import { createGlobalStyle } from 'styled-components';
+
+const CommonStyles = createGlobalStyle`
 html,
 body {
   padding: 0;
@@ -14,3 +17,12 @@ a {
 * {
   box-sizing: border-box;
 }
+
+
+body  {
+  background: ${props => props.theme.bg};
+  color: ${props => props.theme.txt};
+}
+`;
+
+export default CommonStyles;
