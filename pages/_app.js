@@ -1,20 +1,23 @@
 import React from 'react';
-import { ThemeProvider } from 'next-themes';
+import { ThemeProvider } from 'styled-components';
 import CommonStyles from '../styled/CommonStyles';
-// import useDarkmode from '../hooks/useDarkmode';
-import Layout from '../components/Layout';
+import useDarkmode from '../hooks/useDarkmode';
 
 import '../node_modules/github-markdown-css/github-markdown.css';
 
 function App({ Component, pageProps }) {
-    // const { theme, toggleTheme } = useDarkmode();
+    const { theme, toggleTheme } = useDarkmode();
 
     return (
-        <ThemeProvider>
+        <ThemeProvider theme={theme}>
             <CommonStyles />
-            <Layout>
-                <Component {...pageProps} />
-            </Layout>
+            <header>
+                <h1>🙈🙉🙊</h1>
+                <button type="button" onClick={toggleTheme}>
+                    toggle
+                </button>
+            </header>
+            <Component {...pageProps} />
         </ThemeProvider>
     );
 }

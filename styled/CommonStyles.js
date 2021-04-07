@@ -18,16 +18,10 @@ a {
   box-sizing: border-box;
 }
 
-/* */
-:root {
-  /* Your default theme */
-  --background: white;
-  --foreground: black;
-}
 
-[data-theme='dark'] {
-  --background: black;
-  --foreground: white;
+body  {
+  background: ${props => props.theme.bg};
+  color: ${props => props.theme.txt};
 }
 `;
 
