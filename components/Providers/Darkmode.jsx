@@ -15,8 +15,6 @@ export default function DarkMode() {
         const prefersDarkFromMQ = mql.matches;
         const colorMode = prefersDarkFromMQ ? 'dark' : 'light';
 
-        console.log(colorMode);
-
         const root = document.documentElement;
 
         Object.entries(COLORS).forEach(([name, colorByTheme]) => {

@@ -39,7 +39,6 @@ export default class MyDocument extends Document {
                 <Head>
                     <FallbackStyles />
                 </Head>
-
                 <body>
                     <MagicScriptTag />
                     <Main />

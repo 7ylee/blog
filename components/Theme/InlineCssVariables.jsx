@@ -5,7 +5,7 @@ CSS variables into the :root of the page before any content is
 rendered.
 */
 import React from 'react';
-import Terser from 'terser';
+// import Terser from 'terser';
 import COLORS from './colors';
 
 export function setColorsByTheme() {
@@ -30,9 +30,7 @@ export function MagicScriptTag() {
         JSON.stringify(COLORS)
     );
 
-    let calledFunction = `(${boundFn})()`;
-
-    calledFunction = Terser.minify(calledFunction).code;
+    const calledFunction = `(${boundFn})()`;
 
     // eslint-disable-next-line react/no-danger
     return <script dangerouslySetInnerHTML={{ __html: calledFunction }} />;
