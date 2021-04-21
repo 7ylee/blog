@@ -19,9 +19,12 @@ a {
 }
 
 
-body  {
-  background: ${props => props.theme.bg};
-  color: ${props => props.theme.txt};
+html {
+  background: var(--bg-primary);
+}
+
+body {
+  color: var(--text-primary);
 }
 `;
 
