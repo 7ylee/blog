@@ -13,7 +13,11 @@ export default function DarkMode() {
     React.useEffect(() => {
         const mql = window.matchMedia('(prefers-color-scheme: dark)');
         const prefersDarkFromMQ = mql.matches;
-        const colorMode = prefersDarkFromMQ ? 'dark' : 'light';
+        let colorMode = prefersDarkFromMQ ? 'dark' : 'light';
+
+        const getLocalstorage = window.localStorage.getItem('darkMode');
+        if (getLocalstorage)
+            colorMode = getLocalstorage === 'true' ? 'dark' : 'light';
 
         const root = document.documentElement;
 

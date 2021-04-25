@@ -20,10 +20,12 @@ a {
 
 
 html {
+  background: #fff; /* ie fallback */
   background: var(--bg-primary);
 }
 
 body {
+  color: #000; /* ie fallback */
   color: var(--text-primary);
 }
 `;
