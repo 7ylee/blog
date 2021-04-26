@@ -1,6 +1,7 @@
 import React from 'react';
-import CommonStyles from '../components/styled/CommonStyles';
+import GlobalStyle from '../components/styled/GlobalStyle';
 import useDarkMode from '../components/Theme/useDarkMode';
+import Button from '../components/styled/Button';
 
 import '../node_modules/github-markdown-css/github-markdown.css';
 
@@ -9,15 +10,15 @@ function App({ Component, pageProps }) {
 
     return (
         <>
-            <CommonStyles />
+            <GlobalStyle />
             <header>
                 <h1>🙈🙉🙊</h1>
-                <button type="button" onClick={toggle}>
+                <Button primary type="button" onClick={toggle}>
                     toggle
-                </button>
-                <button type="button" onClick={system}>
+                </Button>
+                <Button type="button" onClick={system}>
                     system
-                </button>
+                </Button>
             </header>
             <Component {...pageProps} />
         </>

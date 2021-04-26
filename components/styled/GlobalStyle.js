@@ -2,7 +2,7 @@
 import React from 'react';
 import { Global, css } from '@emotion/react';
 
-const CommonStyles = () => (
+const GlobalStyle = () => (
     <Global
         styles={css`
             html,
@@ -32,4 +32,4 @@ const CommonStyles = () => (
     />
 );
 
-export default CommonStyles;
+export default GlobalStyle;
