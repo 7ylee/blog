@@ -1,26 +1,26 @@
 import React from 'react';
-import useDarkMode from 'use-dark-mode';
-import CommonStyles from '../styled/CommonStyles';
-import Providers from '../components/Providers';
+import CommonStyles from '../components/styled/CommonStyles';
+import useDarkMode from '../components/Theme/useDarkMode';
+
 import '../node_modules/github-markdown-css/github-markdown.css';
 
 function App({ Component, pageProps }) {
-    const darkMode = useDarkMode();
+    const { toggle, system } = useDarkMode(false);
 
     return (
-        <Providers>
+        <>
             <CommonStyles />
             <header>
                 <h1>🙈🙉🙊</h1>
-                <button type="button" onClick={darkMode.enable}>
-                    dark
+                <button type="button" onClick={toggle}>
+                    toggle
                 </button>
-                <button type="button" onClick={darkMode.disable}>
-                    light
+                <button type="button" onClick={system}>
+                    system
                 </button>
             </header>
             <Component {...pageProps} />
-        </Providers>
+        </>
     );
 }
 

@@ -5,30 +5,39 @@ CSS variables into the :root of the page before any content is
 rendered.
 */
 import React from 'react';
-// import Terser from 'terser';
 import COLORS from './colors';
 
-export function setColorsByTheme() {
-    const colors = '🌈';
-
+export function setColorsByTheme(fromHook) {
+    const colors = fromHook ? COLORS : '🌈';
+    // system color mode
     const mql = window.matchMedia('(prefers-color-scheme: dark)');
     const prefersDarkFromMQ = mql.matches;
     let colorMode = prefersDarkFromMQ ? 'dark' : 'light';
 
-    const getLocalstorage = window.localStorage.getItem('darkMode');
-    if (getLocalstorage)
-        colorMode = getLocalstorage === 'true' ? 'dark' : 'light';
+    // user color mode preference
+    const userDarkMode = window.localStorage.getItem('darkMode');
+    if (userDarkMode) colorMode = userDarkMode === 'true' ? 'dark' : 'light';
 
+    // add or update css vars
     const root = document.documentElement;
-
     Object.entries(colors).forEach(([name, colorByTheme]) => {
         const cssVarName = `--${name}`;
-
         root.style.setProperty(cssVarName, colorByTheme[colorMode]);
     });
+
+    // window event handler - for system change
+    if (!window.localStorage.getItem('darkMode') && !fromHook) {
+        window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+            colorMode = e.matches ? 'dark' : 'light';
+            Object.entries(colors).forEach(([name, colorByTheme]) => {
+                const cssVarName = `--${name}`;
+                root.style.setProperty(cssVarName, colorByTheme[colorMode]);
+            });
+        });
+    }
 }
 
-export function MagicScriptTag() {
+export function InjectCssVars() {
     const boundFn = String(setColorsByTheme).replace(
         "'🌈'",
         JSON.stringify(COLORS)
