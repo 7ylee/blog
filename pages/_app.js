@@ -5,16 +5,26 @@ import useDarkMode from '../components/Theme/useDarkMode';
 import Button from '../components/styled/Button';
 import '../node_modules/github-markdown-css/github-markdown.css';
 
+const config = require('../next.config');
+
 function App({ Component, pageProps }) {
     const { toggle, system, darkMode } = useDarkMode(false);
 
     return (
         <>
             <Head>
-                <link rel="preload" href="/prism-default.css" as="script" />
-                <link rel="preload" href="/prism-okaidia.css" as="script" />
                 <link
-                    href={`/prism-${
+                    rel="preload"
+                    href={`${config.basePath}/prism-default.css`}
+                    as="script"
+                />
+                <link
+                    rel="preload"
+                    href={`${config.basePath}/prism-tomorrow.css`}
+                    as="script"
+                />
+                <link
+                    href={`${config.basePath}/prism-${
                         darkMode === 'true' ? 'tomorrow' : 'default'
                     }.css`}
                     rel="stylesheet"
