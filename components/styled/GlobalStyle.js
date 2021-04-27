@@ -23,10 +23,13 @@ const GlobalStyle = () => (
             html {
                 background: #fff; /* ie fallback */
                 background: var(--bg-primary);
+                transition: background-color 0.2s
+                    cubic-bezier(0.175, 0.885, 0.32, 1.275);
             }
             body {
                 color: #000; /* ie fallback */
                 color: var(--text-primary);
+                transition: color 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             }
         `}
     />

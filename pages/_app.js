@@ -4,6 +4,8 @@ import Link from 'next/link';
 import GlobalStyle from '../components/styled/GlobalStyle';
 import useDarkMode from '../components/Theme/useDarkMode';
 import Button from '../components/styled/Button';
+import Layout from '../components/Layout';
+
 import '../node_modules/github-markdown-css/github-markdown.css';
 
 const config = require('../next.config');
@@ -32,18 +34,20 @@ function App({ Component, pageProps }) {
                 />
             </Head>
             <GlobalStyle />
-            <header>
-                <h1>
-                    <Link href="/">🤔</Link>
-                </h1>
-                <Button primary type="button" onClick={toggle}>
-                    toggle
-                </Button>
-                <Button type="button" onClick={system}>
-                    system
-                </Button>
-            </header>
-            <Component {...pageProps} />
+            <Layout>
+                <header>
+                    <h1>
+                        <Link href="/">🤔</Link>
+                    </h1>
+                    <Button primary type="button" onClick={toggle}>
+                        toggle
+                    </Button>
+                    <Button type="button" onClick={system}>
+                        system
+                    </Button>
+                </header>
+                <Component {...pageProps} />
+            </Layout>
         </>
     );
 }
