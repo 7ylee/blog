@@ -20,6 +20,10 @@ const useDarkMode = initialState => {
     const [darkMode, setDarkmode] = useState(initialState);
 
     useEffect(() => {
+        const colorMode = currentColorMode();
+        const isDarkMode = colorMode === 'dark';
+
+        setDarkmode(isDarkMode.toString());
         setColorsByTheme(true);
     }, [darkMode]);
 
@@ -45,7 +49,8 @@ const useDarkMode = initialState => {
 
     return {
         toggle,
-        system
+        system,
+        darkMode
     };
 };
 

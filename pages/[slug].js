@@ -1,49 +1,46 @@
 import React from 'react';
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
 import Head from 'next/head';
-import marked from 'marked';
 
-const Article = ({ slug, html, frontmatter }) => {
+import { getAllDocs, getDocBySlug } from '../lib/docs';
+import markdownToHtml from '../lib/markdown';
+
+const Article = ({ slug, content, meta }) => {
     return (
         <>
             <Head>
-                <title>{frontmatter.title}</title>
-                <meta title="description" content={frontmatter.desc} />
+                <title>{meta.title}</title>
+                <meta name="description" content={meta.desc} />
             </Head>
-            <article dangerouslySetInnerHTML={{ __html: html }} />
+            <article dangerouslySetInnerHTML={{ __html: content }} />
         </>
     );
 };
 
-export const getStaticPaths = async () => {
-    const files = fs.readdirSync('posts');
-    const paths = files.map(filename => ({
-        params: {
-            slug: filename.replace('.md', '')
-        }
-    }));
-    return {
-        paths,
-        fallback: false
-    };
-};
-
-export const getStaticProps = async ({ params: { slug } }) => {
-    const markdownWithMeta = fs
-        .readFileSync(path.join('posts', `${slug}.md`))
-        .toString();
-    const parsedMarkdown = matter(markdownWithMeta);
-    const htmlString = marked(parsedMarkdown.content);
+export async function getStaticProps({ params }) {
+    const doc = getDocBySlug(params.slug);
+    const content = await markdownToHtml(doc.content || '');
 
     return {
         props: {
-            slug,
-            html: htmlString,
-            frontmatter: parsedMarkdown.data
+            ...doc,
+            content
         }
     };
-};
+}
+
+export async function getStaticPaths() {
+    const docs = getAllDocs();
+
+    return {
+        paths: docs.map(doc => {
+            return {
+                params: {
+                    slug: doc.slug
+                }
+            };
+        }),
+        fallback: false
+    };
+}
 
 export default Article;
