@@ -1,7 +1,7 @@
 const COLORS = {
     'bg-primary': {
         light: '#fefefe',
-        dark: '#050505'
+        dark: '#212121'
     },
     'bg-secondary': {
         light: '#ffffff',
