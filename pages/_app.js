@@ -1,5 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
+import Link from 'next/link';
 import GlobalStyle from '../components/styled/GlobalStyle';
 import useDarkMode from '../components/Theme/useDarkMode';
 import Button from '../components/styled/Button';
@@ -32,7 +33,9 @@ function App({ Component, pageProps }) {
             </Head>
             <GlobalStyle />
             <header>
-                <h1>🙈🙉🙊</h1>
+                <h1>
+                    <Link href="/">🤔</Link>
+                </h1>
                 <Button primary type="button" onClick={toggle}>
                     toggle
                 </Button>
