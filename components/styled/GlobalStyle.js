@@ -27,6 +27,10 @@ const GlobalStyle = () => (
                 color: #000; /* ie fallback */
                 color: var(--text-primary);
             }
+            code {
+                font-size: 0.8em !important;
+                line-height: 0.8 !important;
+            }
         `}
     />
 );
