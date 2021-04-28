@@ -28,7 +28,7 @@ function App({ Component, pageProps }) {
                 />
                 <link
                     href={`${config.basePath}/prism-${
-                        darkMode === 'true' ? 'tomorrow' : 'default'
+                        darkMode ? 'tomorrow' : 'default'
                     }.css`}
                     rel="stylesheet"
                 />

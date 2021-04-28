@@ -41,15 +41,15 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, atque.
 
 ``` jsx
 const Article = ({ slug, html, frontmatter }) => {
-    return (
-        <>
-            <Head>
-                <title>{frontmatter.title}</title>
-                <meta title="description" content={frontmatter.desc} />
-            </Head>
-            <article dangerouslySetInnerHTML={{ __html: html }} />
-        </>
-    );
+  return (
+    <>
+      <Head>
+        <title>{frontmatter.title}</title>
+        <meta title="description" content={frontmatter.desc} />
+      </Head>
+      <article dangerouslySetInnerHTML={{ __html: html }} />
+    </>
+  );
 };
 ```
 
@@ -61,10 +61,10 @@ Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iure consectetur eius 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
 <body>
 

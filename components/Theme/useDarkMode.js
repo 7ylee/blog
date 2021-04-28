@@ -10,8 +10,8 @@ const currentColorMode = () => {
     let colorMode = prefersDarkFromMQ ? 'dark' : 'light';
 
     // user color mode preference
-    const userDarkMode = window.localStorage.getItem(STORAGEKEY);
-    if (userDarkMode) colorMode = userDarkMode === 'true' ? 'dark' : 'light';
+    const userDarkMode = JSON.parse(window.localStorage.getItem(STORAGEKEY));
+    if (userDarkMode !== null) colorMode = userDarkMode ? 'dark' : 'light';
 
     return colorMode;
 };
@@ -23,7 +23,7 @@ const useDarkMode = initialState => {
         const colorMode = currentColorMode();
         const isDarkMode = colorMode === 'dark';
 
-        setDarkmode(isDarkMode.toString());
+        setDarkmode(isDarkMode);
         setColorsByTheme(true);
     }, [darkMode]);
 

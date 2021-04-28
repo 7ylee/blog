@@ -1,8 +1,15 @@
 import React from 'react';
 import Head from 'next/head';
-
+import styled from '@emotion/styled';
 import { getAllDocs, getDocBySlug } from '../lib/docs';
 import markdownToHtml from '../lib/markdown';
+
+const ArticleStyled = styled.article`
+    img {
+        width: 100%;
+        height: auto;
+    }
+`;
 
 const Article = ({ slug, content, meta }) => {
     return (
@@ -11,7 +18,7 @@ const Article = ({ slug, content, meta }) => {
                 <title>{meta.title}</title>
                 <meta name="description" content={meta.desc} />
             </Head>
-            <article dangerouslySetInnerHTML={{ __html: content }} />
+            <ArticleStyled dangerouslySetInnerHTML={{ __html: content }} />
         </>
     );
 };

@@ -15,8 +15,8 @@ export function setColorsByTheme(fromHook) {
     let colorMode = prefersDarkFromMQ ? 'dark' : 'light';
 
     // user color mode preference
-    const userDarkMode = window.localStorage.getItem('darkMode');
-    if (userDarkMode) colorMode = userDarkMode === 'true' ? 'dark' : 'light';
+    const userDarkMode = JSON.parse(window.localStorage.getItem('darkMode'));
+    if (userDarkMode !== null) colorMode = userDarkMode ? 'dark' : 'light';
 
     // add or update css vars
     const root = document.documentElement;
