@@ -69,7 +69,7 @@ function App({ Component, pageProps }) {
                             👨‍💻
                         </Button>
                         <Button type="button" onClick={toggle}>
-                            {`${darkMode ? '☀️' : '🌙'}`}
+                            {`${darkMode ? '🌙' : '☀️'}`}
                         </Button>
                     </div>
                 </Header>
